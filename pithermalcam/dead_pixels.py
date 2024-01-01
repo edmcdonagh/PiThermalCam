@@ -2,7 +2,7 @@ import numpy as np
 
 
 def fix_broken_pixels(image):
-    dead_pixels = np.argwhere(image == 0)
+    dead_pixels = np.argwhere(image == -273.15)
     for px in dead_pixels:
         _fix_dead_pixel_value(px, image)
 
@@ -19,7 +19,7 @@ def _fix_dead_pixel_value(px, image):
 
 def get_min_max(raw_image, exclude_dead_px=True):
     if exclude_dead_px:
-        t_min = np.min(raw_image[np.where(raw_image > 0)])
+        t_min = np.min(raw_image[np.where(raw_image > -50)])
     else:
         t_min = np.min(raw_image)
     t_max = np.max(raw_image)
