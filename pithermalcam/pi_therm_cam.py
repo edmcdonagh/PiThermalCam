@@ -81,7 +81,7 @@ class PiThermalCam:
         filter_image: bool = False,
         image_width: int = config.get_image_size()[0],
         image_height: int = config.get_image_size()[1],
-        output_folder: str = "/home/pi/pithermalcam/saved_snapshots/",
+        output_folder: str = "/home/ed/cam_saved_snapshots/",
     ):
         self.use_f = use_f
         self.filter_image = filter_image
@@ -382,7 +382,7 @@ class PiThermalCam:
 
 if __name__ == "__main__":
     # If class is run as main, read ini and set up a live feed displayed to screen
-    out_folder = "/home/pi/PiThermalCam/saved_snapshots/"
+    out_folder = "/home/ed/cam_saved_snapshots/"
 
     thermcam = PiThermalCam(output_folder=out_folder)  # Instantiate class
     thermcam.display_camera_onscreen()

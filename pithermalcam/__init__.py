@@ -52,13 +52,13 @@ def test_camera():
         raise e
 
 
-def display_camera_live(output_folder: str = "/home/pi/pithermalcam/saved_snapshots/"):
+def display_camera_live(output_folder: str = "/home/ed/cam_saved_snapshots/"):
     """Display the camera live onscreen"""
     thermcam = PiThermalCam(output_folder=output_folder)  # Instantiate class
     thermcam.display_camera_onscreen()
 
 
-def stream_camera_online(output_folder: str = "/home/pi/pithermalcam/saved_snapshots/"):
+def stream_camera_online(output_folder: str = "/home/ed/cam_saved_snapshots/"):
     """Start a flask server streaming the camera live"""
     # This is a clunky way to do this, the better approach would likely to be restructuring web_server.py with the
     # Flask Blueprint approach
