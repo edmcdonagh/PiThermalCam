@@ -266,7 +266,7 @@ regex==2021.11.10
     # via black
 requests==2.26.0
     # via jupyterlab-server
-rpi.gpio==0.7.0
+rpi.gpio==0.7.1
     # via -r requirements.in
 scipy==1.7.3
     # via -r requirements.in
