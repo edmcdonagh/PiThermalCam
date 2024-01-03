@@ -23,4 +23,5 @@ def get_min_max(raw_image, exclude_dead_px=True):
     else:
         t_min = np.min(raw_image)
     t_max = np.max(raw_image)
-    return t_min, t_max
+#    return t_min, t_max
+    return 0, 20

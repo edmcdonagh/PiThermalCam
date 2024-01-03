@@ -128,6 +128,15 @@ class PiThermalCam:
         temp_f = self._c_to_f(temp_c)
         return temp_c, temp_f
 
+
+    def _set_max_temp(self):
+        high_temps = np.argwhere(self._raw_image >= self._temp_max)
+#        print(high_temps)
+#        print(self._raw_image[high_temps])
+        for px in high_temps:
+            self._raw_image[px] = self._temp_max
+
+
     def _pull_raw_image(self):
         """Get one pull of the raw image data, converting temp units if necessary"""
         # Get image
@@ -135,7 +144,8 @@ class PiThermalCam:
         try:
             self.mlx.getFrame(self._raw_image)  # read mlx90640
             self._temp_min, self._temp_max = get_min_max(self._raw_image, exclude_dead_px=True)
-            self._temp_max = np.max(self._raw_image)
+#            self._temp_max = np.max(self._raw_image)
+            self._set_max_temp()
             self._raw_image = self._temps_to_rescaled_uints(self._raw_image, self._temp_min, self._temp_max)
             fix_broken_pixels(self._raw_image)
             self._current_frame_processed = False  # Note that the newly updated raw frame has not been processed
